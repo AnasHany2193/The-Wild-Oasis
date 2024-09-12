@@ -1,16 +1,21 @@
 import styled from "styled-components";
+
+import Heading from "./ui/Heading";
 import GlobalStyles from "./styles/GlobalStyles";
 
-const H1 = styled.h1`
-  font-size: 2rem;
-  font-weight: 600;
+const StyledApp = styled.div`
+  padding: 20px;
 `;
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <H1>Hello, Wild Oasis</H1>
+      <StyledApp>
+        <Heading as="h1">Hello, Wild Oasis</Heading>
+        <Heading as="h2">Check in Out</Heading>
+        <Heading as="h3">Hello, Wild Oasis</Heading>
+      </StyledApp>
     </>
   );
 }
