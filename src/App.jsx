@@ -1,44 +1,34 @@
-import styled from "styled-components";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Heading from "./ui/Heading";
 import GlobalStyles from "./styles/GlobalStyles";
-import Row from "./ui/Row";
-import Button from "./ui/Button";
 
-const StyledApp = styled.main`
-  padding: 20px;
-`;
+import Login from "./pages/Login";
+import Users from "./pages/Users";
+import Cabins from "./pages/Cabins";
+import Account from "./pages/Account";
+import Bookings from "./pages/Bookings";
+import Settings from "./pages/Settings";
+import Dashboard from "./pages/Dashboard";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <StyledApp>
-        <Row>
-          <Row type="horizontal">
-            <Heading as="h1">Hello, Wild Oasis</Heading>
-            <div>
-              <Heading as="h2">Check in Out</Heading>
-              <Button onClick={() => alert("Checked In")}>check in</Button>
-              <Button
-                sizes="small"
-                variations="secondary"
-                onClick={() => alert("Checked Out")}
-              >
-                check out
-              </Button>
-            </div>
-          </Row>
+      <BrowserRouter>
+        <Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<Navigate replace to="dashboard" />} />
 
-          <Row>
-            <Heading as="h3">Hello, Wild Oasis</Heading>
-            <form>
-              <input type="number" />
-              <input type="number" />
-            </form>
-          </Row>
-        </Row>
-      </StyledApp>
+          <Route path="login" element={<Login />} />
+          <Route path="users" element={<Users />} />
+          <Route path="cabins" element={<Cabins />} />
+          <Route path="account" element={<Account />} />
+          <Route path="bookings" element={<Bookings />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
