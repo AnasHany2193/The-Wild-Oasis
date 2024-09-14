@@ -13,6 +13,7 @@ import Bookings from "./pages/Bookings";
 import Settings from "./pages/Settings";
 import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/PageNotFound";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60 * 1000 } },
@@ -40,6 +41,27 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+
+      <Toaster
+        gutter={12}
+        position="top-center"
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3 * 1000,
+          },
+          error: {
+            duration: 5 * 1000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            color: "var(--color-grey-700)",
+            backgroundColor: "var(--color-grey-0)",
+          },
+        }}
+      />
     </QueryClientProvider>
   );
 }
