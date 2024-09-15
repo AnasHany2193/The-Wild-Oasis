@@ -54,12 +54,12 @@ const Button = styled.button`
   box-shadow: var(--shadow-sm);
 
   ${(props) => sizes[props.sizes]}
-  ${(props) => variations[props.variations]}
+  ${(props) => variations[props.$variations]}
 `;
 
 Button.defaultProps = {
   sizes: "medium",
-  variations: "primary",
+  $variations: "primary", // Use transient prop here as well
 };
 
 export default Button;
