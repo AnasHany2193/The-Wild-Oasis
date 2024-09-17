@@ -15,6 +15,12 @@ const Row = styled.div`
       flex-direction: column;
       gap: 1.6rem;
     `};
+
+  /* Media Query for large devices */
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 1.6rem;
+  }
 `;
 
 Row.defaultProps = {
