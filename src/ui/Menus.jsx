@@ -1,8 +1,8 @@
 import styled from "styled-components";
-
-import { createContext, useContext, useState } from "react";
-import { HiEllipsisVertical } from "react-icons/hi2";
 import { createPortal } from "react-dom";
+import { HiEllipsisVertical } from "react-icons/hi2";
+import { createContext, useContext, useState } from "react";
+
 import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const Menu = styled.div`
@@ -92,7 +92,7 @@ function Toggle({ id }) {
 
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
-      y: rect.y + rect.height + 10,
+      y: rect.y + rect.height + 8,
     });
 
     openId === "" || openId !== id ? open(id) : close();
@@ -131,7 +131,7 @@ function Button({ icon, onClick, children }) {
     <li>
       <StyledButton onClick={handleClick}>
         {icon}
-        <span> {children}</span>
+        <span>{children}</span>
       </StyledButton>
     </li>
   );

@@ -1,5 +1,5 @@
-import { createContext, useContext } from "react";
 import styled from "styled-components";
+import { createContext, useContext } from "react";
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -10,11 +10,9 @@ const StyledTable = styled.div`
   overflow: hidden;
 `;
 
-const CommonRow = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "columns",
-})`
+const CommonRow = styled.div`
   display: grid;
-  grid-template-columns: ${(props) => props.columns};
+  grid-template-columns: ${(props) => props.$columns};
   column-gap: 2.4rem;
   align-items: center;
   transition: none;
@@ -76,7 +74,7 @@ function Header({ children }) {
   const { columns } = useContext(TableContext);
 
   return (
-    <StyledHeader role="row" columns={columns} as="header">
+    <StyledHeader role="row" $columns={columns} as="header">
       {children}
     </StyledHeader>
   );
@@ -86,7 +84,7 @@ function Row({ children }) {
   const { columns } = useContext(TableContext);
 
   return (
-    <StyledRow role="row" columns={columns}>
+    <StyledRow role="row" $columns={columns}>
       {children}
     </StyledRow>
   );
@@ -100,9 +98,9 @@ function Body({ data, render }) {
   );
 }
 
-Table.Header = Header;
 Table.Row = Row;
 Table.Body = Body;
+Table.Header = Header;
 Table.Footer = Footer;
 
 export default Table;
