@@ -7,9 +7,8 @@ import {
   HiOutlineHomeModern,
 } from "react-icons/hi2";
 
-import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
-
+import DataItem from "../../ui/DataItem";
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
 const StyledBookingDataBox = styled.section`
@@ -76,10 +75,10 @@ const Price = styled.div`
   border-radius: var(--border-radius-sm);
   margin-top: 2.4rem;
 
-  background-color: ${(props) =>
-    props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
-  color: ${(props) =>
-    props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+  background-color: ${($props) =>
+    $props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
+  color: ${($props) =>
+    $props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
 
   & p:last-child {
     text-transform: uppercase;
@@ -104,19 +103,19 @@ const Footer = styled.footer`
 // A purely presentational component
 function BookingDataBox({ booking }) {
   const {
-    created_at,
-    startDate,
+    isPaid,
     endDate,
+    startDate,
     numNights,
     numGuests,
     cabinPrice,
-    extrasPrice,
+    created_at,
     totalPrice,
+    extrasPrice,
     hasBreakfast,
     observations,
-    isPaid,
-    guests: { fullName: guestName, email, country, countryFlag, nationalId },
     cabins: { name: cabinName },
+    guests: { fullName: guestName, email, country, countryFlag, nationalId },
   } = booking;
 
   return (
@@ -163,7 +162,7 @@ function BookingDataBox({ booking }) {
           {hasBreakfast ? "Yes" : "No"}
         </DataItem>
 
-        <Price isPaid={isPaid}>
+        <Price $isPaid={isPaid}>
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 
