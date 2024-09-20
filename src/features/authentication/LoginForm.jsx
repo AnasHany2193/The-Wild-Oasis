@@ -3,20 +3,30 @@ import { useState } from "react";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import Button from "../../ui/Button";
-import FormRowVertical from "../../ui/FormRowVertical";
-import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
+import FormRowVertical from "../../ui/FormRowVertical";
+
+import { useLogin } from "./useLogin";
 
 function LoginForm() {
   const { login, isLoading } = useLogin();
-  const [email, setEmail] = useState("anas@example.com");
+
   const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("anas@example.com");
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (!email || !password) return;
-    login({ email, password });
+    login(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
   }
 
   return (
