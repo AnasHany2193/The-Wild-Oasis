@@ -7,6 +7,8 @@ function SortBy({ options }) {
 
   function handelChange(e) {
     searchParams.set("sortBy", e.target.value);
+    if (searchParams.get("page")) searchParams.set("page", 1);
+
     setSearchParams(searchParams);
   }
 
