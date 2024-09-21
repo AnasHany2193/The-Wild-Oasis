@@ -78,7 +78,12 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button disabled={isLoading} $variations="secondary" type="reset">
+        <Button
+          type="reset"
+          onClick={reset}
+          disabled={isLoading}
+          $variations="secondary"
+        >
           Cancel
         </Button>
         <Button disabled={isLoading}>Create new user</Button>
