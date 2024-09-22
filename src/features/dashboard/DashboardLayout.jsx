@@ -6,6 +6,7 @@ import Spinner from "../../ui/Spinner";
 import { useCabins } from "../cabins/useCabins";
 import { useRecentStays } from "./useRecentStays";
 import { useRecentBookings } from "./useRecentBookings";
+import SalesChart from "./SalesChart";
 
 const StyledDashboardLayout = styled.div`
   display: grid;
@@ -19,7 +20,7 @@ const StyledDashboardLayout = styled.div`
   }
 
   @media (max-width: 768px) {
-    grid-template-rows: auto auto auto auto 34rem auto;
+    grid-template-rows: repeat(4, auto) 34rem auto;
     grid-template-columns: 1fr;
   }
 `;
@@ -48,7 +49,7 @@ function DashboardLayout() {
       />
       <div>Today's activity</div>
       <div>Chart stay durations</div>
-      <div>Chart sales</div>
+      <SalesChart numDays={numDays} bookings={bookings} />
     </StyledDashboardLayout>
   );
 }
