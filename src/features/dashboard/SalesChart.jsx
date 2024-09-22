@@ -60,26 +60,23 @@ function SalesChart({ numDays, bookings }) {
         background: "#fff",
       };
 
-  const CustomYAxis = ({ unit = "$", tick = {}, tickLine = {} }) => (
-    <YAxis unit={unit} tick={tick} tickLine={tickLine} />
-  );
-
-  const CustomXAxis = ({ dataKey = "label", tick = {}, tickLine = {} }) => (
-    <XAxis dataKey={dataKey} tick={tick} tickLine={tickLine} />
-  );
-
   return (
     <StyledSalesChart>
-      <Heading as="h2">Sales</Heading>
+      <Heading as="h2">
+        Sales form {format(allDates.at(0), "MMM dd yyy")} &mdash;{" "}
+        {format(allDates.at(-1), "MMM dd yyy")}
+      </Heading>
       <ResponsiveContainer height={300} width="100%">
         <AreaChart data={data}>
           <CartesianGrid strokeDasharray="4" />
           <Tooltip contentStyle={{ backgroundColor: colors.background }} />
-          <CustomYAxis
+          <YAxis
+            unit="$"
             tick={{ fill: colors.text }}
             tickLine={{ stroke: colors.text }}
           />
-          <CustomXAxis
+          <XAxis
+            dataKey="label"
             tick={{ fill: colors.text }}
             tickLine={{ stroke: colors.text }}
           />
