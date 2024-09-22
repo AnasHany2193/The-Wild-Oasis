@@ -14,7 +14,7 @@ import {
 import Heading from "../../ui/Heading";
 import DashboardBox from "./DashboardBox";
 
-import { useDarkMode } from "../context/DarkModeContext";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
